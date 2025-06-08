@@ -93,13 +93,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`} suppressHydrationWarning>
-      <head>{/* Favicon and manifest links remain the same */}<link rel="icon" href="/favicon.ico" sizes="any" /><link rel="apple-touch-icon" href="/apple-touch-icon.png" /><link rel="manifest" href="/site.webmanifest" /></head>
-      {/* Apply base body styling from globals.css. Next-themes will handle dark/light mode on <html> */}
-      <body className="min-h-screen antialiased">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+      </head>
+      <body className="min-h-screen antialiased" suppressHydrationWarning>
         <Providers>
-          <ClientLayout>
-            {children}
-          </ClientLayout>
+          <div id="motion-provider">
+            <ClientLayout>
+              {children}
+            </ClientLayout>
+          </div>
         </Providers>
       </body>
     </html>

@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import colors from 'tailwindcss/colors';
 import defaultTheme from 'tailwindcss/defaultTheme';
 import typographyPlugin from '@tailwindcss/typography';
 import formsPlugin from '@tailwindcss/forms';
@@ -94,13 +95,24 @@ const config: Config = {
             'background-position': 'right center',
           },
         },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'gradient-x': 'gradient-x 15s ease infinite',
         'gradient-y': 'gradient-y 15s ease infinite',
+        fadeIn: 'fadeIn 0.5s ease-in forwards',
       },
+      animationDelay: {
+        200: '200ms',
+        400: '400ms',
+        600: '600ms',
+        800: '800ms',
+      }
     },
   },
   plugins: [
@@ -120,6 +132,16 @@ const config: Config = {
         },
       });
     }),
+    function ({ addUtilities, theme }: any) {
+      const animationDelays = theme('animationDelay') as Record<string, string>;
+      const utilities = Object.entries(animationDelays).reduce((acc, [key, value]) => {
+        return {
+          ...acc,
+          [`.animation-delay-${key}`]: { 'animation-delay': value },
+        };
+      }, {});
+      addUtilities(utilities);
+    },
   ],
 } satisfies Config;
 

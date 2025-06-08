@@ -1,19 +1,17 @@
-import { useScroll, motion, useSpring } from 'framer-motion';
+'use client';
+
+import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 export function ScrollProgress() {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
-  
   const [isVisible, setIsVisible] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsVisible(window.scrollY > 100);
+      const height = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(window.scrollY / height);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -24,18 +22,16 @@ export function ScrollProgress() {
 
   return (
     <>
-      <motion.div
-        className="fixed left-0 right-0 top-0 z-50 h-1 bg-gradient-to-r from-primary to-secondary"
-        style={{ scaleX, transformOrigin: '0%' }}
+      <div
+        className="fixed inset-x-0 top-0 z-50 h-1 bg-gradient-to-r from-primary to-secondary"
+        style={{ transform: `scaleX(${scrollProgress})`, transformOrigin: '0%' }}
       />
       <motion.button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         className="fixed bottom-8 right-8 z-50 flex size-12 items-center justify-center rounded-full bg-primary/10 text-primary backdrop-blur-sm transition-colors hover:bg-primary/20"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 20 }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
