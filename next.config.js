@@ -1,22 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   swcMinify: true,
   images: {
     domains: ["github.com"],
   },
   distDir: ".next",
   trailingSlash: true,
-  webpack: (config) => {
-    // config.resolve = {
-    //   ...config.resolve,
-    //   fallback: {
-    //     fs: false,
-    //     net: false,
-    //     dns: false,
-    //     tls: false,
-    //   },
-    // };
+  webpack: (config, { isServer }) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      react: require.resolve("react"),
+      "react-dom": require.resolve("react-dom"),
+    };
     return config;
   },
 };
