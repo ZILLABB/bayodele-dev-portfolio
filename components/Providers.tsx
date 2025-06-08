@@ -1,21 +1,19 @@
 "use client";
 
 import { ThemeProvider } from "next-themes";
-import { ReactNode } from "react";
+import { KeyboardNavigationProvider } from "./KeyboardNavigation";
 
-interface ProvidersProps {
-  children: ReactNode;
-}
-
-export function Providers({ children }: ProvidersProps) {
+export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <ThemeProvider 
-      attribute="class" 
-      defaultTheme="system" 
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="system"
       enableSystem
-      disableTransitionOnChange // Recommended to prevent layout shifts during theme switch
+      disableTransitionOnChange
     >
-      {children}
+      <KeyboardNavigationProvider>
+        {children}
+      </KeyboardNavigationProvider>
     </ThemeProvider>
   );
 }

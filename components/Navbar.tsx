@@ -1,18 +1,27 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { SunIcon, MoonIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import { AnimatePresence } from 'framer-motion';
+'use client';
+
+import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
+import { motion, AnimatePresence } from 'framer-motion';
+import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
+import { XMarkIcon, Bars3Icon } from '@heroicons/react/24/solid';
+
+const navLinks = [
+  { name: 'About', href: '#about' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'Skills', href: '#skills' },
+  { name: 'Contact', href: '#contact' },
+];
 
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  // useEffect only runs on the client, so we can safely show the UI
+  const [scrolled, setScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   useEffect(() => {
     setMounted(true);
   }, []);
-  const [scrolled, setScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,97 +35,92 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [scrolled]);
 
-  const navLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Contact', href: '#contact' },
-  ];
+  if (!mounted) {
+    return null;
+  }
 
   return (
-    <motion.nav 
-      className={`fixed w-full z-50 transition-all duration-300 ease-in-out ${
-        scrolled 
-          ? 'py-3 shadow-lg bg-bg-light/80 dark:bg-bg-dark/80 glassmorphism' 
-          : 'py-5 bg-transparent'
+    <motion.nav
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+        scrolled ? 'glassmorphism py-4 shadow-md' : 'bg-transparent py-6'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.6 }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between">
           <motion.a
-            href="#"
-            className="text-2xl font-bold text-gradient-primary"
+            href="#home"
+            className="text-xl font-bold text-foreground"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Bayodele Shedu
+            BS
           </motion.a>
 
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
+          <div className="hidden items-center space-x-8 md:flex">
+            {navLinks.map((link, index) => (
               <motion.a
                 key={link.name}
                 href={link.href}
-                className="font-medium text-text-secondary-light dark:text-text-secondary-dark hover:text-primary dark:hover:text-secondary transition-colors duration-300 ease-in-out"
+                className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary"
                 whileHover={{ y: -2 }}
-                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
               >
                 {link.name}
               </motion.a>
             ))}
+
             <motion.button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="btn btn-ghost p-2"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              aria-label="Toggle dark mode"
+              className="rounded-lg bg-muted p-2 text-foreground/80 transition-colors hover:bg-muted/80 hover:text-primary"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Toggle theme"
             >
-              {!mounted ? null : theme === 'dark' ? (
-                <SunIcon className="h-5 w-5 text-text-primary-dark" />
+              {theme === 'dark' ? (
+                <SunIcon className="size-5" />
               ) : (
-                <MoonIcon className="h-5 w-5 text-text-primary-light" />
+                <MoonIcon className="size-5" />
               )}
             </motion.button>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
-            {/* Theme toggle for mobile - consistent with desktop */}
+          <div className="flex items-center md:hidden">
             <motion.button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="btn btn-ghost p-2 mr-2"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              aria-label="Toggle dark mode"
+              className="mr-2 rounded-lg bg-muted p-2 text-foreground/80 transition-colors hover:bg-muted/80 hover:text-primary"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Toggle theme"
             >
-              {!mounted ? null : theme === 'dark' ? (
-                <SunIcon className="h-5 w-5" />
+              {theme === 'dark' ? (
+                <SunIcon className="size-5" />
               ) : (
-                <MoonIcon className="h-5 w-5" />
+                <MoonIcon className="size-5" />
               )}
             </motion.button>
-            {/* Mobile Menu Toggle Button */}
+
             <motion.button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="btn btn-ghost p-2"
-              aria-label="Toggle mobile menu"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
+              className="rounded-lg bg-muted p-2 text-foreground/80 transition-colors hover:bg-muted/80 hover:text-primary"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? (
-                <XMarkIcon className="h-6 w-6 text-text-primary-light dark:text-text-primary-dark" />
+                <XMarkIcon className="size-6" />
               ) : (
-                <Bars3Icon className="h-6 w-6 text-text-primary-light dark:text-text-primary-dark" />
+                <Bars3Icon className="size-6" />
               )}
             </motion.button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu Panel */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -124,17 +128,16 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
-            className="md:hidden absolute top-full left-0 right-0 shadow-lg glassmorphism bg-bg-light/95 dark:bg-bg-dark/95 py-2"
+            className="glassmorphism absolute inset-x-0 top-full py-2 shadow-lg md:hidden"
           >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col space-y-1 pb-3 pt-2">
+            <div className="flex flex-col space-y-4 px-4">
               {navLinks.map((link) => (
                 <motion.a
                   key={link.name}
                   href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)} // Close menu on link click
-                  className="block px-3 py-2 rounded-md text-base font-medium text-text-secondary-light dark:text-text-secondary-dark hover:bg-bg-hover-light dark:hover:bg-bg-hover-dark hover:text-primary dark:hover:text-secondary transition-colors duration-300 ease-in-out"
-                  whileHover={{ x: 5 }}
-                  whileTap={{ scale: 0.98 }}
+                  className="text-foreground/80 transition-colors hover:text-primary"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  whileHover={{ x: 4 }}
                 >
                   {link.name}
                 </motion.a>
