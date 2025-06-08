@@ -4,20 +4,19 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: ["github.com"],
-    unoptimized: true,
   },
   distDir: ".next",
   trailingSlash: true,
   webpack: (config) => {
-    config.resolve = {
-      ...config.resolve,
-      fallback: {
-        fs: false,
-        net: false,
-        dns: false,
-        tls: false,
-      },
-    };
+    // config.resolve = {
+    //   ...config.resolve,
+    //   fallback: {
+    //     fs: false,
+    //     net: false,
+    //     dns: false,
+    //     tls: false,
+    //   },
+    // };
     return config;
   },
 };
