@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "../components/ClientLayout";
-import { ThemeProvider } from "@/components/ThemeProvider";
+// import { ThemeProvider } from "@/components/ThemeProvider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -96,11 +96,11 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body className="min-h-screen bg-background text-foreground antialiased" suppressHydrationWarning>
-        <ThemeProvider>
+        {/* <ThemeProvider> */}
           <ClientLayout>
             {children}
           </ClientLayout>
-        </ThemeProvider>
+        {/* </ThemeProvider> */}
       </body>
     </html>
   );
