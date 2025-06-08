@@ -1,0 +1,235 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+============================================
+Global Styles for a Premium Modern Look
+============================================
+*/
+
+/* Variables (Optional - Tailwind handles most of this, but useful for JS or complex scenarios) */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+
+  * {
+    @apply border-[hsl(var(--border))];
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  html {
+    @apply scroll-smooth antialiased;
+    font-family: "Inter", sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold tracking-tight text-gray-900;
+    font-family: "Inter", sans-serif;
+  }
+
+  h1 {
+    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight;
+  }
+
+  h2 {
+    @apply text-3xl sm:text-4xl md:text-5xl leading-snug;
+  }
+
+  h3 {
+    @apply text-2xl sm:text-3xl md:text-4xl leading-normal;
+  }
+
+  p,
+  li,
+  blockquote {
+    @apply text-gray-600 text-base sm:text-lg leading-relaxed md:leading-loose;
+  }
+
+  a {
+    @apply text-blue-600 hover:text-purple-600 transition-colors duration-300 ease-in-out underline;
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-400 focus-visible:ring-opacity-50 rounded;
+  }
+
+  /* Custom Scrollbar - Sleek & Modern */
+  ::-webkit-scrollbar {
+    @apply w-[10px] h-[10px];
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100 rounded-md;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 rounded-md border-2 border-transparent bg-clip-padding;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500;
+  }
+
+  /* Selection Highlight */
+  ::selection {
+    background-color: #6366f1;
+    @apply text-white;
+  }
+}
+
+/* Components Layer - Buttons, Cards, Sections, etc. */
+@layer components {
+  /* Container */
+  .container-main {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full;
+  }
+
+  /* Sections */
+  .section-padding {
+    @apply py-16 sm:py-20 md:py-24 lg:py-28;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12 md:mb-16 relative;
+  }
+  .section-title::after {
+    content: "";
+    @apply block w-24 h-1.5 bg-blue-500 mx-auto mt-4 rounded-full;
+  }
+
+  /* Buttons - Premium Feel */
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-3.5 rounded-lg font-semibold text-base sm:text-lg tracking-wide transition-all duration-300 ease-in-out transform focus:outline-none focus-visible:ring-4 disabled:opacity-60 disabled:cursor-not-allowed shadow-lg hover:shadow-xl active:scale-95;
+  }
+
+  .btn-primary {
+    @apply bg-blue-600 text-white hover:bg-blue-700 focus-visible:ring-blue-400 focus-visible:ring-opacity-50;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-blue-600 border-2 border-blue-600 hover:bg-blue-50 focus-visible:ring-blue-400 focus-visible:ring-opacity-50;
+  }
+
+  .btn-ghost {
+    @apply text-blue-600 hover:bg-blue-50 focus-visible:ring-blue-400 focus-visible:ring-opacity-50 shadow-none;
+  }
+
+  /* Cards - With Glassmorphism Option */
+  .card-base {
+    @apply rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out overflow-hidden bg-white;
+  }
+
+  .glassmorphism {
+    @apply bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60 border border-gray-200/50 bg-white/[.65];
+  }
+
+  /* Input Fields */
+  .input-field {
+    @apply block w-full px-4 py-3 rounded-lg bg-gray-100 border-2 border-transparent text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-colors duration-200 ease-in-out;
+  }
+}
+
+/* Utilities Layer - Gradients, Animations, etc. */
+@layer utilities {
+  /* Premium Gradients */
+  .bg-gradient-primary-diag {
+    @apply bg-gradient-to-br from-blue-500 to-purple-500;
+  }
+  .bg-gradient-primary-horiz {
+    @apply bg-gradient-to-r from-blue-500 to-purple-500;
+  }
+  .text-gradient-primary {
+    @apply bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text;
+  }
+
+  /* Animations */
+  .fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+  .fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Smooth scroll polyfill for browsers that don't support it */
+  .scroll-smooth {
+    scroll-behavior: smooth;
+  }
+
+  .bg-grid-slate-900\/5 {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(15 23 42 / 0.04)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+  }
+
+  .dark .bg-grid-slate-800\/25 {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(148 163 184 / 0.08)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+  }
+}
+
+/* For dark mode */
+.dark * {
+  scrollbar-color: #4b5563 #1f2937;
+}
