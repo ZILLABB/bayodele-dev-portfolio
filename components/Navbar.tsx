@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { XMarkIcon, Bars3Icon } from '@heroicons/react/24/solid';
+import { ThemeToggle } from './ThemeToggle';
 
 const navLinks = [
   { name: 'About', href: '#about' },
@@ -61,11 +62,11 @@ export default function Navbar() {
                 {link.name}
               </motion.a>
             ))}
-
+            <ThemeToggle />
           </div>
 
-          <div className="flex items-center md:hidden">
-
+          <div className="flex items-center space-x-4 md:hidden">
+            <ThemeToggle />
             <motion.button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="rounded-lg bg-muted p-2 text-foreground/80 transition-colors hover:bg-muted/80 hover:text-primary"
