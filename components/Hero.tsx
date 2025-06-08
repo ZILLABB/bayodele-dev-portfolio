@@ -50,10 +50,9 @@ const Hero = () => {
     <AnimatePresence>
       <motion.div
         className="relative w-full"
-        initial="hidden"
-        animate="visible"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        variants={variants}
       >
         <section 
           ref={containerRef}
