@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "../components/ClientLayout";
-import { Providers } from "../components/Providers";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -17,10 +16,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#0f172a" },
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-  ],
+  themeColor: "#0f172a",
 };
 
 export const metadata: Metadata = {
@@ -99,13 +95,11 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body className="min-h-screen antialiased" suppressHydrationWarning>
-        <Providers>
-          <div id="motion-provider">
-            <ClientLayout>
-              {children}
-            </ClientLayout>
-          </div>
-        </Providers>
+        <div id="motion-provider">
+          <ClientLayout>
+            {children}
+          </ClientLayout>
+        </div>
       </body>
     </html>
   );

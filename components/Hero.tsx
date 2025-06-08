@@ -1,18 +1,31 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowDownIcon, CodeBracketIcon, CpuChipIcon, RocketLaunchIcon, LightBulbIcon } from '@heroicons/react/24/solid';
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end start']
-  });
+  const [scrollProgress, setScrollProgress] = useState(0);
 
-  const yBg = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        const scrollPercentage = Math.max(0, Math.min(1, -rect.top / rect.height));
+        setScrollProgress(scrollPercentage);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Use simpler animation values
+  const variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
 
   const features = [
     {
@@ -34,7 +47,13 @@ const Hero = () => {
   ];
 
   return (
-    <div className="relative w-full">
+    <motion.div
+      className="relative w-full"
+      initial="hidden"
+      animate="visible"
+      transition={{ duration: 0.5 }}
+      variants={variants}
+    >
       <section 
         ref={containerRef}
         id="home" 

@@ -1,9 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useTheme } from 'next-themes';
 import { motion, AnimatePresence } from 'framer-motion';
-import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
 import { XMarkIcon, Bars3Icon } from '@heroicons/react/24/solid';
 
 const navLinks = [
@@ -14,14 +12,8 @@ const navLinks = [
 ];
 
 export default function Navbar() {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,10 +26,6 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [scrolled]);
-
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <motion.nav
@@ -74,35 +62,9 @@ export default function Navbar() {
               </motion.a>
             ))}
 
-            <motion.button
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="rounded-lg bg-muted p-2 text-foreground/80 transition-colors hover:bg-muted/80 hover:text-primary"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              aria-label="Toggle theme"
-            >
-              {theme === 'dark' ? (
-                <SunIcon className="size-5" />
-              ) : (
-                <MoonIcon className="size-5" />
-              )}
-            </motion.button>
           </div>
 
           <div className="flex items-center md:hidden">
-            <motion.button
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="mr-2 rounded-lg bg-muted p-2 text-foreground/80 transition-colors hover:bg-muted/80 hover:text-primary"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              aria-label="Toggle theme"
-            >
-              {theme === 'dark' ? (
-                <SunIcon className="size-5" />
-              ) : (
-                <MoonIcon className="size-5" />
-              )}
-            </motion.button>
 
             <motion.button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from 'framer-motion';
 import { EnvelopeIcon, MapPinIcon, PhoneIcon, ArrowUpRightIcon } from '@heroicons/react/24/outline';
 
