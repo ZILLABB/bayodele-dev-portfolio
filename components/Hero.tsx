@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { ArrowDownIcon, CodeBracketIcon, CpuChipIcon, RocketLaunchIcon, LightBulbIcon } from '@heroicons/react/24/solid';
 import { useRef, useEffect, useState } from 'react';
 
@@ -22,7 +22,7 @@ const Hero = () => {
   }, []);
 
   // Use simpler animation values
-  const variants = {
+  const variants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
   };
