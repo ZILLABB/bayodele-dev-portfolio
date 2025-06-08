@@ -7,12 +7,8 @@ const nextConfig = {
   },
   distDir: ".next",
   trailingSlash: true,
-  webpack: (config, { isServer }) => {
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      react: require.resolve("react"),
-      "react-dom": require.resolve("react-dom"),
-    };
+  webpack: (config) => {
+    // Revert to original webpack config, if needed
     return config;
   },
 };
