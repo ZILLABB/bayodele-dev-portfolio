@@ -97,11 +97,9 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen bg-background text-foreground antialiased" suppressHydrationWarning>
         <ThemeProvider>
-          <div id="motion-provider">
-            <ClientLayout>
-              {children}
-            </ClientLayout>
-          </div>
+          <ClientLayout>
+            {children}
+          </ClientLayout>
         </ThemeProvider>
       </body>
     </html>
