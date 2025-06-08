@@ -3,12 +3,17 @@
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import { type ReactNode } from 'react';
 
-interface ThemeProviderProps {
+type ThemeProviderProps = {
   children: ReactNode;
   defaultTheme?: string;
   enableSystem?: boolean;
-  attribute?: string;
-}
+  attribute?: 'class' | 'data-theme';
+  value?: { light: string; dark: string };
+  disableTransitionOnChange?: boolean;
+  storageKey?: string;
+  themes?: string[];
+  forcedTheme?: string;
+};
 
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
   return (
