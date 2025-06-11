@@ -7,6 +7,7 @@ import Methodology from '../components/Methodology';
 import Projects from '../components/Projects';
 import Skills from '../components/Skills';
 import Contact from '../components/Contact';
+import SimpleThreeBackground from '../components/three/SimpleThreeBackground';
 
 export default function Home() {
   // Handle animations on mount
@@ -40,6 +41,9 @@ export default function Home() {
         Skip to content
       </a>
       <main id="main-content" className="relative overflow-hidden bg-background">
+        {/* Interactive Background */}
+        <SimpleThreeBackground />
+
         <div className="relative space-y-24 md:space-y-32 lg:space-y-40">
           <div className="section-animate opacity-0">
             <Hero />

@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+// import AIToolsVisualization from './three/AIToolsVisualization';
 
 const skillCategories = [
 	{
@@ -124,6 +125,31 @@ export default function Skills() {
             </motion.div>
           ))}
         </div>
+
+        {/* AI Tools Visualization - Coming Soon */}
+        <motion.div
+          className="mt-16 text-center"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <div className="rounded-2xl bg-gradient-to-r from-primary/5 to-secondary/5 p-8">
+            <h3 className="text-2xl font-bold text-foreground mb-4">
+              AI Development Tools Mastery
+            </h3>
+            <p className="text-foreground/80 max-w-2xl mx-auto mb-6">
+              Leveraging cutting-edge AI tools for rapid, production-ready development
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              {['Cursor (98%)', 'Augment (95%)', 'Windsurf (92%)', 'AI Prompting (99%)'].map((tool, index) => (
+                <span key={index} className="px-4 py-2 bg-primary/20 rounded-full text-primary font-medium">
+                  🤖 {tool}
+                </span>
+              ))}
+            </div>
+          </div>
+        </motion.div>
 
 				<motion.div          className="mt-16 rounded-2xl bg-gradient-to-r from-muted to-accent/20 p-8 text-center"
 					initial={{ opacity: 0, y: 30 }}

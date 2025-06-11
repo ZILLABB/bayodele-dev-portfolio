@@ -3,6 +3,7 @@
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { ArrowDownIcon, CodeBracketIcon, CpuChipIcon, RocketLaunchIcon, LightBulbIcon } from '@heroicons/react/24/solid';
 import { useRef, useEffect, useState } from 'react';
+// import ParticleField from './three/ParticleField';
 
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -54,13 +55,15 @@ const Hero = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <section 
+        <section
           ref={containerRef}
-          id="home" 
+          id="home"
           className="relative flex min-h-screen w-full items-center justify-center overflow-hidden pt-16"
         >
+          {/* Interactive particles handled by background */}
+
           {/* Modern, layered background */}
-          <motion.div 
+          <motion.div
             className="absolute inset-0 z-0"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

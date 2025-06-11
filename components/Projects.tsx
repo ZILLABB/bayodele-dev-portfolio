@@ -1,15 +1,16 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { 
-  RocketLaunchIcon, 
-  ChatBubbleLeftRightIcon, 
-  CubeIcon, 
-  CpuChipIcon, 
-  ChartBarIcon, 
+import {
+  RocketLaunchIcon,
+  ChatBubbleLeftRightIcon,
+  CubeIcon,
+  CpuChipIcon,
+  ChartBarIcon,
   LinkIcon,
   ArrowTopRightOnSquareIcon
 } from '@heroicons/react/24/outline';
+// import ProjectCard3D from './three/ProjectCard3D';
 
 const projects = [
   {
@@ -114,12 +115,12 @@ export default function Projects() {
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              className="group relative overflow-hidden rounded-xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl border-border hover:border-primary/20 bg-card hover:bg-card/80"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
+                className="group relative overflow-hidden rounded-xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl border-border hover:border-primary/20 bg-card hover:bg-card/80"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
               {/* Background gradient overlay with enhanced visibility */}
               <div className={`absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 ${project.gradient}`} />
               
