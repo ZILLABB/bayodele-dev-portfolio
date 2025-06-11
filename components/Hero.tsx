@@ -30,19 +30,19 @@ const Hero = () => {
   const features = [
     {
       icon: <CodeBracketIcon className="size-5" />,
-      text: 'Full-Stack Development'
+      text: 'AI-Powered Development'
     },
     {
       icon: <CpuChipIcon className="size-5" />,
-      text: 'AI Engineering'
+      text: 'Smart Contract Engineering'
     },
     {
       icon: <RocketLaunchIcon className="size-5" />,
-      text: 'Rapid Prototyping'
+      text: 'Rapid AI Prototyping'
     },
     {
       icon: <LightBulbIcon className="size-5" />,
-      text: 'Intelligent Systems'
+      text: 'Intelligent Prompting'
     }
   ];
 
@@ -78,13 +78,13 @@ const Hero = () => {
               className="mx-auto max-w-4xl"
             >
               <motion.div className="text-center">
-                <motion.div 
+                <motion.div
                   className="glassmorphism mb-6 inline-block rounded-full px-6 py-2 font-medium text-primary"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
                 >
-                  AI-First Developer • Builder of Intelligent Systems
+                  AI-Powered Developer • Master of Intelligent Prompting
                 </motion.div>
                 
                 <div className="relative mb-8 flex justify-center">
@@ -104,13 +104,13 @@ const Hero = () => {
                   Bayodele Shedu
                 </motion.h1>
 
-                <motion.p 
+                <motion.p
                   className="mx-auto mb-10 text-xl max-w-3xl leading-relaxed text-foreground/80 md:text-2xl"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
                 >
-                  I guide systems into existence with <span className="text-gradient-primary font-semibold">AI as my co-pilot</span>, building intelligent applications that solve real problems.
+                  I orchestrate intelligent systems with <span className="text-gradient-primary font-semibold">exceptional AI prompting skills</span>, delivering production-ready applications in record time using Cursor, Augment, and Windsurf.
                 </motion.p>
 
                 <motion.div 

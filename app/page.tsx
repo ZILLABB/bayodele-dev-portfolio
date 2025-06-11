@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import Hero from '../components/Hero';
 import About from '../components/About';
+import Methodology from '../components/Methodology';
 import Projects from '../components/Projects';
 import Skills from '../components/Skills';
 import Contact from '../components/Contact';
@@ -45,6 +46,9 @@ export default function Home() {
           </div>
           <div className="section-animate opacity-0">
             <About />
+          </div>
+          <div className="section-animate opacity-0">
+            <Methodology />
           </div>
           <div className="section-animate opacity-0">
             <Projects />

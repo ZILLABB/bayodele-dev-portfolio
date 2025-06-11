@@ -4,12 +4,21 @@ import { motion } from 'framer-motion';
 
 const skillCategories = [
 	{
-		category: 'Core',
+		category: 'AI Development Tools',
+		items: [
+			{ name: 'Cursor', level: 98, icon: '🤖' },
+			{ name: 'Augment', level: 95, icon: '🚀' },
+			{ name: 'Windsurf', level: 92, icon: '🌊' },
+			{ name: 'AI Prompting', level: 99, icon: '💬' },
+		],
+	},
+	{
+		category: 'Core Languages',
 		items: [
 			{ name: 'TypeScript', level: 95, icon: '🔷' },
 			{ name: 'Python', level: 92, icon: '🐍' },
-			{ name: 'Go', level: 85, icon: '🐹' },
-			{ name: 'Bash/Shell', level: 85, icon: '💻' },
+			{ name: 'Solidity', level: 88, icon: '⛓️' },
+			{ name: 'JavaScript', level: 90, icon: '💛' },
 		],
 	},
 	{
@@ -33,13 +42,13 @@ const skillCategories = [
 		],
 	},
 	{
-		category: 'AI/ML',
+		category: 'AI/ML & Blockchain',
 		items: [
+			{ name: 'Smart Contracts', level: 90, icon: '📜' },
 			{ name: 'OpenAI API', level: 92, icon: '🧠' },
-			{ name: 'LangChain', level: 88, icon: '⛓️' },
-			{ name: 'Vector DBs', level: 85, icon: '🗄️' },
+			{ name: 'Hardhat', level: 88, icon: '⚒️' },
 			{ name: 'NLP', level: 87, icon: '💬' },
-			{ name: 'LLM Tooling', level: 89, icon: '🤖' },
+			{ name: 'Multi-chain', level: 85, icon: '🔗' },
 		],
 	},
 	{

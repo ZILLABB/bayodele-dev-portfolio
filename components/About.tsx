@@ -71,17 +71,17 @@ export default function About() {
               </h3>
               
               <p className="mx-auto mb-6 max-w-3xl text-center text-lg text-foreground/80">
-                I&apos;m a full-stack software developer and <span className="font-semibold text-primary">Vibe Coder</span> based in Nigeria. 
-                I specialize in building advanced, AI-integrated products—end-to-end—from idea to deployment. 
-                I work smart, fast, and with intent.
+                I&apos;m a full-stack software developer and <span className="font-semibold text-primary">AI-First Developer</span> based in Nigeria.
+                I specialize in building advanced, production-ready applications—end-to-end—from concept to deployment.
+                My superpower? <span className="font-semibold text-primary">Exceptional prompting skills</span> that enable me to work with AI tools to deliver complex projects in remarkably short timeframes.
               </p>
 
               <p className="mx-auto mb-8 max-w-3xl text-center text-lg text-foreground/80">
-                I don&apos;t just code—I guide systems into existence. With tools like 
-                <span className="font-medium text-primary"> Cursor</span>, 
-                <span className="font-medium text-primary"> Augment</span>, and 
-                <span className="font-medium text-primary"> Windsurf</span>, 
-                I transform raw ideas into production-ready systems—faster, smarter, and more sustainably.
+                I don&apos;t just code—I orchestrate intelligent systems. With tools like
+                <span className="font-medium text-primary"> Cursor</span>,
+                <span className="font-medium text-primary"> Augment</span>, and
+                <span className="font-medium text-primary"> Windsurf</span>,
+                I transform complex ideas into production-ready systems—faster, smarter, and more efficiently than traditional development approaches.
               </p>
             </div>
 
@@ -94,18 +94,18 @@ export default function About() {
                 {[
                   {
                     icon: <LightBulbIcon className="size-6" />,
-                    title: "I build with vibes and vision",
-                    description: "letting AI handle implementation while I guide logic, architecture, and UX."
+                    title: "Master of AI Prompting",
+                    description: "I excel at communicating with AI tools to generate complex, production-ready code rapidly and efficiently."
                   },
                   {
                     icon: <CodeBracketIcon className="size-6" />,
-                    title: "AI is my pair programmer",
-                    description: "freeing me to focus on systems thinking, creativity, and solving real problems."
+                    title: "AI-Powered Development",
+                    description: "Using Cursor, Augment, and Windsurf as my co-pilots to build full-stack applications in record time."
                   },
                   {
                     icon: <RocketLaunchIcon className="size-6" />,
-                    title: "Code is a medium",
-                    description: "I focus on delivering real value, not just writing code."
+                    title: "End-to-End Delivery",
+                    description: "From smart contracts to ML models, I deliver complete solutions that solve real-world problems."
                   }
                 ].map((item, index) => (
                   <motion.div
