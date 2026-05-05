@@ -14,78 +14,77 @@ import {
 
 const projects = [
   {
-    title: "🏆 Betsightly - Sports Prediction Platform",
+    title: "Betsightly",
     description:
-      "Production-grade sports prediction platform with ML models for football and basketball. Features real-time odds analysis, automated prediction pipelines, and Telegram bot integration. Built with AI assistance using Cursor and Windsurf for rapid development and deployment.",
-    tags: ["TypeScript", "Python", "Machine Learning", "Docker", "Telegram API", "Vite"],
+      "Sports prediction platform with custom ML models for football and basketball outcomes. Features real-time odds analysis, automated prediction pipelines, and a Telegram bot that delivers picks to subscribers. Full-stack with separate frontend (TypeScript/Vite) and backend (Python/FastAPI) services.",
+    tags: ["TypeScript", "Python", "Machine Learning", "Docker", "Telegram API", "FastAPI"],
     icon: <RocketLaunchIcon className="size-6 text-primary dark:text-primary-light" />,
     link: "https://github.com/ZILLABB/betsightly-frontend",
     gradient: "from-blue-500/20 to-purple-500/20",
     featured: true,
-    status: "Production Ready",
+    status: "Production",
     github: "https://github.com/ZILLABB/betsightly-frontend",
     backend: "https://github.com/ZILLABB/betsightly-backend",
-    aiTools: ["Cursor", "Windsurf"]
   },
   {
-    title: "💰 Cryptonestle - DeFi Investment Platform",
+    title: "Cryptonestle",
     description:
-      "Complete crypto investment platform with smart contracts, multi-chain support (Ethereum, BSC, Polygon), and automated ROI calculations. Features 5 investment plans, secure withdrawals, JWT authentication, and comprehensive admin panel. 80% production-ready backend with 23/23 tests passing.",
-    tags: ["Solidity", "Node.js", "TypeScript", "Hardhat", "Prisma", "JWT", "Multi-chain"],
+      "DeFi investment platform with 3 audited smart contracts deployed across Ethereum, BSC, and Polygon. Includes 5 investment tiers, automated ROI calculations, secure withdrawal flows, and a full admin panel. Backend achieves 100% test pass rate (23/23 suites).",
+    tags: ["Solidity", "Hardhat", "Node.js", "Prisma", "JWT", "Multi-chain"],
     icon: <CubeIcon className="size-6 text-primary dark:text-primary-light" />,
-    link: "#",
+    link: "https://github.com/ZILLABB/cryptonested-frontend",
     gradient: "from-yellow-500/20 to-orange-500/20",
     featured: true,
-    status: "Backend Complete",
-    details: "Smart contracts deployed, 3 production-ready contracts, complete API with security",
-    aiTools: ["Augment", "Cursor"]
+    status: "Beta",
+    github: "https://github.com/ZILLABB/cryptonested-frontend",
+    backend: "https://github.com/ZILLABB/cryptonestle-backend",
   },
   {
-    title: "🛍️ ProductWhisper - AI Product Discovery",
+    title: "ProductWhisper",
     description:
-      "TypeScript/Node.js backend using sentiment analysis and NLP to help users discover products from conversations and reviews. Features clean REST API, AI-powered content parsing, and intelligent product recommendations. Built with AI pair programming for rapid iteration.",
-    tags: ["TypeScript", "Node.js", "NLP", "Sentiment Analysis", "REST API", "Vite"],
+      "AI-powered product discovery engine that analyzes conversations and reviews using NLP and sentiment analysis. Surfaces intelligent product recommendations through a clean REST API. Separate frontend (React) and backend (Node.js/TypeScript) architecture.",
+    tags: ["TypeScript", "Node.js", "NLP", "Sentiment Analysis", "REST API", "React"],
     icon: <ChatBubbleLeftRightIcon className="size-6 text-primary dark:text-primary-light" />,
     link: "https://github.com/ZILLABB/productwhisper-frontend",
     gradient: "from-emerald-500/20 to-teal-500/20",
     featured: true,
-    status: "Full Stack",
+    status: "Live",
     github: "https://github.com/ZILLABB/productwhisper-frontend",
     backend: "https://github.com/ZILLABB/productwhisper-backend",
-    aiTools: ["Cursor", "Augment"]
   },
   {
-    title: "🇩🇪 German Daily Words Bot",
+    title: "German Daily Words Bot",
     description:
-      "Advanced AI-powered Telegram bot for German language learning with CEFR A1-B2 progression, spaced repetition, adaptive quizzes, comprehensive analytics, and multi-user support. Features 6 question types, streak management, and automated GitHub Actions deployment.",
-    tags: ["Python", "Telegram API", "NLP", "AI", "GitHub Actions", "Analytics"],
+      "Telegram bot for German language learners featuring CEFR A1-B2 progression, spaced repetition algorithms, 6 adaptive quiz types, streak tracking, and per-user analytics. Deployed via GitHub Actions with automated scheduling.",
+    tags: ["Python", "Telegram API", "NLP", "GitHub Actions", "Spaced Repetition"],
     icon: <CpuChipIcon className="size-6 text-primary dark:text-primary-light" />,
     link: "https://github.com/ZILLABB/germandailywordsbot",
     gradient: "from-indigo-500/20 to-blue-500/20",
-    status: "Live & Active",
+    status: "Live",
     github: "https://github.com/ZILLABB/germandailywordsbot",
-    details: "100+ vocabulary words, automated scheduling, comprehensive analytics",
-    aiTools: ["Windsurf", "Cursor"]
   },
   {
-    title: "📊 AI-Powered Analytics Dashboard",
+    title: "LendingForte",
     description:
-      "Real-time analytics dashboard with complex data visualizations, customer behavior tracking, and AI-powered insights. Built using modern React patterns with D3.js for interactive charts and WebSocket connections for live updates.",
-    tags: ["React", "D3.js", "WebSockets", "TypeScript", "Data Visualization"],
+      "Financial services platform for loan management with user dashboards, application workflows, and admin controls. Built with TypeScript and modern React patterns for a responsive, accessible experience.",
+    tags: ["TypeScript", "React", "Next.js", "Tailwind CSS", "REST API"],
     icon: <ChartBarIcon className="size-6 text-primary dark:text-primary-light" />,
-    link: "#",
+    link: "https://github.com/ZILLABB/lendingforte",
     gradient: "from-violet-500/20 to-purple-500/20",
-    status: "In Development"
+    status: "Complete",
+    github: "https://github.com/ZILLABB/lendingforte",
   },
   {
-    title: "🔌 Universal API Integration Framework",
+    title: "SpendLot",
     description:
-      "Modular system for connecting third-party APIs with consistent error handling, rate limiting, automatic retries, and comprehensive logging. Generated extensive boilerplate code using AI tools for rapid development.",
-    tags: ["Node.js", "TypeScript", "REST", "Webhooks", "Redis", "Docker"],
+      "Personal finance tracker with expense categorization, budget management, and spending analytics. Full-stack architecture with a TypeScript frontend and Python backend powering real-time insights and reporting.",
+    tags: ["TypeScript", "Python", "React", "Data Visualization", "REST API"],
     icon: <LinkIcon className="size-6 text-primary dark:text-primary-light" />,
-    link: "#",
+    link: "https://github.com/ZILLABB/spendlot-frontend",
     gradient: "from-cyan-500/20 to-sky-500/20",
-    status: "Open Source"
+    status: "Complete",
+    github: "https://github.com/ZILLABB/spendlot-frontend",
+    backend: "https://github.com/ZILLABB/spendlot-backend",
   }
 ];
 
@@ -102,11 +101,11 @@ export default function Projects() {
         >
           <div className="mb-12 text-center">
             <h2 className="mb-4 text-4xl font-bold text-text-primary-light dark:text-text-primary-dark">
-              Projects That Define Me
+              Featured Projects
             </h2>
             <div className="mx-auto mb-6 h-1 w-24 bg-gradient-to-r from-primary to-secondary" />
             <p className="mx-auto max-w-3xl text-xl text-text-secondary-light dark:text-text-secondary-dark">
-              Each project represents a unique challenge solved with creativity, technical expertise, and AI assistance.
+              A selection of production applications I&apos;ve built end-to-end — from system design to deployment.
             </p>
           </div>
         </motion.div>
@@ -149,36 +148,12 @@ export default function Projects() {
                   ))}
                 </div>
 
-                {/* AI Tools Used */}
-                {project.aiTools && (
-                  <div className="mb-4 flex flex-wrap gap-2">
-                    <span className="text-xs font-medium text-muted-foreground">Built with AI:</span>
-                    {project.aiTools.map((tool, toolIndex) => (
-                      <span
-                        key={toolIndex}
-                        className="inline-flex items-center rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 px-2 py-1 text-xs font-medium text-purple-600 dark:text-purple-400"
-                      >
-                        🤖 {tool}
-                      </span>
-                    ))}
-                  </div>
-                )}
-
                 {/* Project Status */}
                 {project.status && (
                   <div className="mb-4">
                     <span className="inline-flex items-center rounded-full bg-green-500/20 px-3 py-1 text-xs font-medium text-green-600 dark:text-green-400">
-                      ✅ {project.status}
+                      {project.status}
                     </span>
-                  </div>
-                )}
-
-                {/* Additional Details */}
-                {project.details && (
-                  <div className="mb-4">
-                    <p className="text-xs text-muted-foreground italic">
-                      {project.details}
-                    </p>
                   </div>
                 )}
 

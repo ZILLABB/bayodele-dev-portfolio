@@ -5,61 +5,58 @@ import { motion } from 'framer-motion';
 
 const skillCategories = [
 	{
-		category: 'AI Development Tools',
-		items: [
-			{ name: 'Cursor', level: 98, icon: '🤖' },
-			{ name: 'Augment', level: 95, icon: '🚀' },
-			{ name: 'Windsurf', level: 92, icon: '🌊' },
-			{ name: 'AI Prompting', level: 99, icon: '💬' },
-		],
-	},
-	{
-		category: 'Core Languages',
+		category: 'Languages',
 		items: [
 			{ name: 'TypeScript', level: 95, icon: '🔷' },
-			{ name: 'Python', level: 92, icon: '🐍' },
-			{ name: 'Solidity', level: 88, icon: '⛓️' },
-			{ name: 'JavaScript', level: 90, icon: '💛' },
+			{ name: 'Python', level: 90, icon: '🐍' },
+			{ name: 'JavaScript', level: 95, icon: '💛' },
+			{ name: 'Solidity', level: 80, icon: '⛓️' },
 		],
 	},
 	{
 		category: 'Frontend',
 		items: [
-			{ name: 'React', level: 96, icon: '⚛️' },
-			{ name: 'Next.js', level: 94, icon: '⏭️' },
-			{ name: 'Tailwind CSS', level: 92, icon: '🎨' },
-			{ name: 'Three.js', level: 82, icon: '📊' },
-			{ name: 'Framer Motion', level: 88, icon: '🎬' },
+			{ name: 'React', level: 95, icon: '⚛️' },
+			{ name: 'Next.js', level: 90, icon: '⏭️' },
+			{ name: 'Tailwind CSS', level: 90, icon: '🎨' },
+			{ name: 'Framer Motion', level: 80, icon: '🎬' },
 		],
 	},
 	{
-		category: 'Backend',
+		category: 'Backend & APIs',
 		items: [
-			{ name: 'Node.js', level: 93, icon: '🟢' },
+			{ name: 'Node.js', level: 90, icon: '🟢' },
 			{ name: 'Express', level: 90, icon: '🚀' },
-			{ name: 'FastAPI', level: 85, icon: '🐍' },
-			{ name: 'Prisma', level: 88, icon: '🔌' },
-			{ name: 'REST/GraphQL', level: 91, icon: '🌐' },
+			{ name: 'FastAPI', level: 80, icon: '🐍' },
+			{ name: 'Prisma', level: 85, icon: '🔌' },
+			{ name: 'REST & GraphQL', level: 90, icon: '🌐' },
 		],
 	},
 	{
-		category: 'AI/ML & Blockchain',
+		category: 'Blockchain & Web3',
 		items: [
-			{ name: 'Smart Contracts', level: 90, icon: '📜' },
-			{ name: 'OpenAI API', level: 92, icon: '🧠' },
-			{ name: 'Hardhat', level: 88, icon: '⚒️' },
-			{ name: 'NLP', level: 87, icon: '💬' },
-			{ name: 'Multi-chain', level: 85, icon: '🔗' },
+			{ name: 'Smart Contracts', level: 80, icon: '📜' },
+			{ name: 'Hardhat', level: 80, icon: '⚒️' },
+			{ name: 'Ethereum/BSC/Polygon', level: 75, icon: '🔗' },
+			{ name: 'DeFi Protocols', level: 75, icon: '💰' },
 		],
 	},
 	{
-		category: 'Infrastructure',
+		category: 'AI & Machine Learning',
 		items: [
-			{ name: 'Docker', level: 90, icon: '🐳' },
-			{ name: 'Railway', level: 88, icon: '🛤️' },
-			{ name: 'Vercel', level: 94, icon: '▲' },
-			{ name: 'Supabase', level: 85, icon: '🔌' },
-			{ name: 'Redis', level: 83, icon: '🔴' },
+			{ name: 'OpenAI API', level: 85, icon: '🧠' },
+			{ name: 'NLP & Sentiment Analysis', level: 80, icon: '💬' },
+			{ name: 'ML Model Integration', level: 75, icon: '📊' },
+			{ name: 'AI Dev Tools (Cursor, etc.)', level: 90, icon: '🤖' },
+		],
+	},
+	{
+		category: 'DevOps & Infrastructure',
+		items: [
+			{ name: 'Docker', level: 85, icon: '🐳' },
+			{ name: 'Vercel / Netlify', level: 90, icon: '▲' },
+			{ name: 'GitHub Actions', level: 85, icon: '⚙️' },
+			{ name: 'PostgreSQL / Redis', level: 80, icon: '🔴' },
 		],
 	},
 ];
@@ -77,12 +74,11 @@ export default function Skills() {
 				>
 					<div className="mb-12 text-center">
 						<h2 className="mb-4 text-4xl font-bold text-text-primary-light dark:text-text-primary-dark">
-							Tools & Tech That Power My Flow
+							Technical Skills
 						</h2>
 						<div className="mx-auto mb-6 h-1 w-24 bg-gradient-to-r from-primary to-secondary" />
 						<p className="mx-auto max-w-3xl text-xl text-text-secondary-light dark:text-text-secondary-dark">
-							A curated selection of technologies I use to build exceptional digital
-							experiences.
+							The technologies I work with daily to build, ship, and scale applications.
 						</p>
 					</div>
 				</motion.div>        
@@ -126,30 +122,6 @@ export default function Skills() {
           ))}
         </div>
 
-        {/* AI Tools Visualization - Coming Soon */}
-        <motion.div
-          className="mt-16 text-center"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <div className="rounded-2xl bg-gradient-to-r from-primary/5 to-secondary/5 p-8">
-            <h3 className="text-2xl font-bold text-foreground mb-4">
-              AI Development Tools Mastery
-            </h3>
-            <p className="text-foreground/80 max-w-2xl mx-auto mb-6">
-              Leveraging cutting-edge AI tools for rapid, production-ready development
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              {['Cursor (98%)', 'Augment (95%)', 'Windsurf (92%)', 'AI Prompting (99%)'].map((tool, index) => (
-                <span key={index} className="px-4 py-2 bg-primary/20 rounded-full text-primary font-medium">
-                  🤖 {tool}
-                </span>
-              ))}
-            </div>
-          </div>
-        </motion.div>
 
 				<motion.div          className="mt-16 rounded-2xl bg-gradient-to-r from-muted to-accent/20 p-8 text-center"
 					initial={{ opacity: 0, y: 30 }}
@@ -158,15 +130,14 @@ export default function Skills() {
 					transition={{ duration: 0.6, delay: 0.2 }}
 				>
 					<h3 className="mb-4 text-2xl font-bold text-text-primary-light dark:text-text-primary-dark">
-						Always Learning, Always Growing
+						Open to Opportunities
 					</h3>
 					<p className="mx-auto mb-6 max-w-3xl text-text-secondary-light dark:text-text-secondary-dark">
-						I&apos;m constantly exploring new technologies and frameworks to stay at
-						the cutting edge of web development and AI. Currently diving deeper into
-						cloud architecture and advanced machine learning techniques.
+						I&apos;m available for full-time roles, contract work, and technical co-founder opportunities.
+						Currently deepening my expertise in cloud architecture, Web3 protocols, and production ML systems.
 					</p>
 					<a href="#contact" className="btn-primary">
-						Let&apos;s Build Something Amazing
+						Let&apos;s Talk
 					</a>
 				</motion.div>
 			</div>

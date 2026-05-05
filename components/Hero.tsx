@@ -31,19 +31,19 @@ const Hero = () => {
   const features = [
     {
       icon: <CodeBracketIcon className="size-5" />,
-      text: 'AI-Powered Development'
+      text: 'Full-Stack Engineering'
     },
     {
       icon: <CpuChipIcon className="size-5" />,
-      text: 'Smart Contract Engineering'
+      text: 'Blockchain & DeFi'
     },
     {
       icon: <RocketLaunchIcon className="size-5" />,
-      text: 'Rapid AI Prototyping'
+      text: 'AI-Augmented Development'
     },
     {
       icon: <LightBulbIcon className="size-5" />,
-      text: 'Intelligent Prompting'
+      text: 'Product-Driven Delivery'
     }
   ];
 
@@ -87,7 +87,7 @@ const Hero = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
                 >
-                  AI-Powered Developer • Master of Intelligent Prompting
+                  Full-Stack Software Engineer • Lagos, Nigeria
                 </motion.div>
                 
                 <div className="relative mb-8 flex justify-center">
@@ -113,7 +113,7 @@ const Hero = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
                 >
-                  I orchestrate intelligent systems with <span className="text-gradient-primary font-semibold">exceptional AI prompting skills</span>, delivering production-ready applications in record time using Cursor, Augment, and Windsurf.
+                  I build <span className="text-gradient-primary font-semibold">production-grade web applications</span>, DeFi platforms, and ML-powered products — from architecture to deployment. 53+ repositories and counting.
                 </motion.p>
 
                 <motion.div 

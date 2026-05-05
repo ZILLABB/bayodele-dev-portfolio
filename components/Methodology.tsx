@@ -12,50 +12,50 @@ import {
 const methodologySteps = [
   {
     step: "01",
-    title: "Intelligent Prompting",
-    description: "I craft precise, context-rich prompts that communicate complex requirements to AI tools like Cursor, Augment, and Windsurf.",
+    title: "Discovery & Architecture",
+    description: "I start by understanding the problem deeply — user needs, constraints, and scale requirements — then design a system architecture that supports growth.",
     icon: <LightBulbIcon className="size-6" />,
     color: "from-blue-500 to-cyan-500",
     details: [
-      "Detailed requirement analysis",
-      "Context-aware prompt engineering",
-      "Iterative refinement process"
+      "Requirements analysis & user research",
+      "System design & data modeling",
+      "Technology selection & trade-off evaluation"
     ]
   },
   {
-    step: "02", 
-    title: "AI-Assisted Development",
-    description: "Leveraging AI tools to generate production-ready code while maintaining architectural integrity and best practices.",
+    step: "02",
+    title: "Rapid Development",
+    description: "I build fast using AI-augmented workflows, component libraries, and proven patterns — without cutting corners on code quality or test coverage.",
     icon: <CpuChipIcon className="size-6" />,
     color: "from-purple-500 to-pink-500",
     details: [
-      "Code generation with AI tools",
-      "Real-time collaboration with AI",
-      "Quality assurance and optimization"
+      "AI-assisted code generation & review",
+      "Test-driven development",
+      "Continuous integration from day one"
     ]
   },
   {
     step: "03",
-    title: "Rapid Iteration",
-    description: "Quick prototyping and testing cycles that allow for fast feedback and continuous improvement of the solution.",
+    title: "Iteration & Refinement",
+    description: "Tight feedback loops with stakeholders and real users. I ship early, measure what matters, and iterate based on evidence.",
     icon: <RocketLaunchIcon className="size-6" />,
     color: "from-green-500 to-emerald-500",
     details: [
-      "Rapid prototyping",
-      "Continuous testing and feedback",
-      "Agile development practices"
+      "Feature flagging & progressive rollouts",
+      "Performance profiling & optimization",
+      "User feedback integration"
     ]
   },
   {
     step: "04",
-    title: "Production Deployment",
-    description: "Delivering robust, scalable solutions with comprehensive testing, documentation, and deployment automation.",
+    title: "Ship & Scale",
+    description: "Production deployment with automated pipelines, monitoring, and documentation. I own the system post-launch and ensure it stays healthy.",
     icon: <CheckCircleIcon className="size-6" />,
     color: "from-orange-500 to-red-500",
     details: [
-      "Comprehensive testing suites",
-      "Automated deployment pipelines",
-      "Production monitoring and maintenance"
+      "CI/CD pipelines (GitHub Actions, Vercel)",
+      "Monitoring, logging & alerting",
+      "Documentation & knowledge transfer"
     ]
   }
 ];
@@ -78,11 +78,11 @@ export default function Methodology() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="mb-4 text-4xl font-bold text-foreground">
-            My <span className="text-gradient-primary">AI-Powered</span> Development Process
+            How I <span className="text-gradient-primary">Work</span>
           </h2>
           <div className="mx-auto mb-6 h-1 w-24 bg-gradient-to-r from-primary to-secondary" />
           <p className="mx-auto max-w-3xl text-xl text-foreground/80">
-            How I leverage cutting-edge AI tools to deliver production-ready applications in record time
+            My development process — from understanding the problem to shipping production systems that scale.
           </p>
         </motion.div>
 
@@ -141,13 +141,13 @@ export default function Methodology() {
         >
           <div className="rounded-2xl bg-gradient-to-r from-primary/10 to-secondary/10 p-8">
             <h3 className="mb-4 text-2xl font-bold text-foreground">
-              Ready to Experience AI-Powered Development?
+              Have a project in mind?
             </h3>
             <p className="mx-auto mb-6 max-w-2xl text-foreground/80">
-              Let's discuss how I can help you build your next project using cutting-edge AI development tools and methodologies.
+              I&apos;m always interested in challenging problems. Let&apos;s talk about what you&apos;re building and how I can help.
             </p>
             <a href="#contact" className="btn-primary">
-              Start Your Project
+              Get In Touch
               <ArrowRightIcon className="ml-2 size-5" />
             </a>
           </div>

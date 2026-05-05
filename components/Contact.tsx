@@ -45,7 +45,7 @@ export default function Contact() {
 					</h2>
 					<div className="mx-auto mt-4 h-1 w-20 rounded-full bg-gradient-to-r from-primary to-secondary" />
 					<p className="mx-auto mt-4 max-w-2xl text-lg text-foreground/80">
-						Having a project in mind or want to discuss potential opportunities? Feel free to reach out!
+						Available for full-time roles, contract projects, and collaborations. Let&apos;s build something great together.
 					</p>
 				</motion.div>
 
@@ -62,7 +62,7 @@ export default function Contact() {
 								Let&apos;s work together
 							</h3>
 							<p className="mb-8 text-foreground/80">
-								I&apos;m always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Feel free to get in touch with me using the contact information or the form.
+								Whether you need a full-stack engineer for your team, a technical co-founder for your startup, or a freelancer to ship a feature fast — I&apos;d love to hear from you.
 							</p>
 						</div>
 
