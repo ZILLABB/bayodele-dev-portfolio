@@ -1,128 +1,109 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
-import { CodeBracketIcon, LightBulbIcon, RocketLaunchIcon } from '@heroicons/react/24/outline';
+
+const quickFacts = [
+  { label: 'Location',   value: 'Lagos, Nigeria' },
+  { label: 'Focus',      value: 'Full-Stack + Web3' },
+  { label: 'Stack',      value: 'TS · Python · Solidity' },
+  { label: 'Status',     value: 'Open to opportunities' },
+];
+
+const pillars = [
+  {
+    title: 'Systems thinking',
+    body:  'I design architectures before I write code — data models, API contracts, and service boundaries that won\'t need rewriting six months later.',
+  },
+  {
+    title: 'End-to-end ownership',
+    body:  'From smart contracts on Polygon to React frontends to Python ML pipelines, I own the whole stack and take responsibility for how it performs in production.',
+  },
+  {
+    title: 'Shipping discipline',
+    body:  'I use AI tooling to move faster, but I don\'t skip tests, code review, or documentation. Fast delivery and code quality aren\'t trade-offs.',
+  },
+];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  show:   { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+};
 
 export default function About() {
   return (
-    <section id="about" className="relative overflow-hidden bg-background py-24">
-      {/* Background gradient effects */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -left-1/4 top-0 size-[30rem] rounded-full bg-primary/10 blur-3xl" />
-        <div className="absolute -right-1/4 bottom-0 size-[30rem] rounded-full bg-secondary/10 blur-3xl" />
-      </div>
+    <section id="about" className="py-24 sm:py-32">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <motion.div
-          className="mb-16 text-center"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          initial="hidden" whileInView="show" viewport={{ once: true }}
+          variants={fadeUp}
+          className="mb-16"
         >
-          <h2 className="mb-4 text-4xl font-bold text-foreground">
-            About <span className="text-gradient-primary">Me</span>
-          </h2>
-          <div className="mx-auto mb-6 h-1 w-24 bg-gradient-to-r from-primary to-secondary" />
-          <p className="mx-auto max-w-3xl text-xl text-foreground/80">
-            A full-stack engineer who ships fast, thinks in systems, and builds products that solve real problems.
-          </p>
+          <p className="section-label mb-3">About</p>
+          <h2 className="section-heading">Who I am</h2>
         </motion.div>
 
-        <div className="grid gap-12 lg:grid-cols-1">
-          {/* Content Section */}
+        <div className="grid gap-16 lg:grid-cols-2">
+
+          {/* Left column — pull quote + quick facts */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-8"
+            initial="hidden" whileInView="show" viewport={{ once: true }}
+            variants={fadeUp}
           >
-            {/* Logo Section */}
-            <motion.div
-              className="mx-auto mb-12 text-center"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="relative mx-auto">
-                <div className="relative mx-auto size-32 overflow-hidden rounded-full border-2 border-primary/20 sm:size-40">
-                  <Image
-                    src="/apple-touch-icon.png"
-                    alt="Bayodele Shedu"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 backdrop-blur-[1px]" />
+            <blockquote className="mb-10 font-display text-2xl font-semibold leading-snug text-foreground sm:text-3xl">
+              "I don't just write code — I design systems that solve real problems,
+              then ship them."
+            </blockquote>
+
+            <div className="grid grid-cols-2 gap-px border border-border">
+              {quickFacts.map((fact) => (
+                <div key={fact.label} className="bg-card p-4">
+                  <p className="mb-1 text-[10px] uppercase tracking-widest text-muted-foreground">
+                    {fact.label}
+                  </p>
+                  <p className="text-sm font-medium text-foreground">{fact.value}</p>
                 </div>
-                {/* Decorative elements */}
-                <div className="absolute -bottom-2 -right-2 -z-10 size-32 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 blur-xl sm:size-40" />
-                <div className="absolute -left-2 -top-2 -z-10 size-32 rounded-full bg-gradient-to-br from-secondary/20 to-primary/20 blur-xl sm:size-40" />
-              </div>
-            </motion.div>
-
-            <div>
-              <h3 className="mb-4 text-center text-2xl font-bold text-foreground">
-                Bayodele Shedu
-              </h3>
-
-              <p className="mx-auto mb-6 max-w-3xl text-center text-lg text-foreground/80">
-                I&apos;m a <span className="font-semibold text-primary">full-stack software engineer</span> based in Lagos, Nigeria with deep expertise in TypeScript, Python, and Solidity.
-                I build end-to-end applications — from responsive frontends in React/Next.js to robust backends with Node.js and Python, to smart contracts on Ethereum, BSC, and Polygon.
-              </p>
-
-              <p className="mx-auto mb-8 max-w-3xl text-center text-lg text-foreground/80">
-                With <span className="font-medium text-primary">53+ repositories</span> on GitHub spanning sports analytics, DeFi platforms, NLP tools, and developer infrastructure,
-                I bring a product-minded approach to engineering. I leverage AI-assisted development tools to accelerate delivery without compromising on architecture, testing, or code quality.
-              </p>
+              ))}
             </div>
+          </motion.div>
 
-            <div>
-              <h4 className="mb-6 text-center text-xl font-semibold text-foreground">
-                What I Bring to the Table
-              </h4>
+          {/* Right column — bio + pillars */}
+          <motion.div
+            initial="hidden" whileInView="show" viewport={{ once: true, margin: '-60px' }}
+            variants={fadeUp}
+            className="space-y-6"
+          >
+            <p className="text-base leading-relaxed text-muted-foreground">
+              I'm a full-stack software engineer with deep roots in TypeScript,
+              Python, and Solidity. Over the past few years I've built everything
+              from sports-prediction ML pipelines to multi-chain DeFi platforms to
+              NLP-powered product discovery tools — most of them alone or in very
+              small teams, which means I'm used to making architecture decisions,
+              not just implementing them.
+            </p>
+            <p className="text-base leading-relaxed text-muted-foreground">
+              I have 53+ public repositories on GitHub, several in active production.
+              I work fast — partly because I leverage AI-assisted development tools
+              well — but the thing I'm actually proud of is that the codebases I
+              ship are maintainable. I care about the next engineer who reads the
+              code, even when that engineer is me three months later.
+            </p>
 
-              <div className="grid gap-6 md:grid-cols-3">
-                {[
-                  {
-                    icon: <LightBulbIcon className="size-6" />,
-                    title: "Systems Thinking",
-                    description: "I design architectures that scale — from database schemas and API contracts to deployment pipelines and monitoring."
-                  },
-                  {
-                    icon: <CodeBracketIcon className="size-6" />,
-                    title: "Rapid Execution",
-                    description: "I ship production-ready features fast by combining deep technical skill with AI-augmented workflows and test-driven iteration."
-                  },
-                  {
-                    icon: <RocketLaunchIcon className="size-6" />,
-                    title: "Full-Stack Ownership",
-                    description: "From smart contracts and ML models to React UIs and DevOps — I own the entire stack from concept to production."
-                  }
-                ].map((item, index) => (
-                  <motion.div
-                    key={index}
-                    className="group rounded-2xl border border-primary/10 bg-primary/[0.03] p-6 transition-all duration-300 hover:border-primary/20 hover:bg-primary/[0.05]"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                  >
-                    <div className="mb-4 w-fit rounded-lg bg-primary/10 p-2 text-primary">
-                      {item.icon}
-                    </div>
-                    <h5 className="mb-2 font-semibold text-foreground">
-                      {item.title}
-                    </h5>
-                    <p className="text-sm text-foreground/70">
-                      {item.description}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
+            <div className="space-y-4 pt-2">
+              {pillars.map((p, i) => (
+                <motion.div
+                  key={p.title}
+                  initial={{ opacity: 0, x: 12 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.1 }}
+                  className="border-l-2 border-border pl-4 hover:border-primary transition-colors duration-200"
+                >
+                  <p className="mb-1 text-sm font-semibold text-foreground">{p.title}</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{p.body}</p>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </div>

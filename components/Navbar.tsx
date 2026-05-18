@@ -6,106 +6,117 @@ import { XMarkIcon, Bars3Icon } from '@heroicons/react/24/solid';
 import { ThemeToggle } from './ThemeToggle';
 
 const navLinks = [
-  { name: 'About', href: '#about' },
-  { name: 'Process', href: '#methodology' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'About',    href: '#about' },
+  { name: 'Work',     href: '#projects' },
+  { name: 'Process',  href: '#methodology' },
+  { name: 'Skills',   href: '#skills' },
+  { name: 'Contact',  href: '#contact' },
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled]             = useState(false);
+  const [isMobileMenuOpen, setMobileMenu]   = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 10;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [scrolled]);
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
     <motion.nav
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? 'glassmorphism py-4 shadow-md' : 'bg-transparent py-6'
+        scrolled
+          ? 'border-b border-border bg-background/95 backdrop-blur-sm'
+          : 'border-b border-transparent bg-transparent'
       }`}
-      initial={{ y: -100 }}
+      initial={{ y: -64 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.4, ease: 'easeOut' }}
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          <motion.a
-            href="#home"
-            className="text-xl font-bold text-foreground"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            BS
-          </motion.a>
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
 
-          <div className="hidden items-center space-x-8 md:flex">
-            {navLinks.map((link, index) => (
-              <motion.a
-                key={link.name}
-                href={link.href}
-                className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary"
-                whileHover={{ y: -2 }}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-              >
-                {link.name}
-              </motion.a>
-            ))}
-            <ThemeToggle />
-          </div>
+        {/* Logo */}
+        <a
+          href="#home"
+          className="font-display text-lg font-bold text-foreground tracking-tight"
+        >
+          BS<span className="text-primary">.</span>
+        </a>
 
-          <div className="flex items-center space-x-4 md:hidden">
-            <ThemeToggle />
-            <motion.button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="rounded-lg bg-muted p-2 text-foreground/80 transition-colors hover:bg-muted/80 hover:text-primary"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              aria-label="Toggle menu"
+        {/* Desktop links */}
+        <div className="hidden items-center gap-8 md:flex">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
-              {isMobileMenuOpen ? (
-                <XMarkIcon className="size-6" />
-              ) : (
-                <Bars3Icon className="size-6" />
-              )}
-            </motion.button>
-          </div>
+              {link.name}
+            </a>
+          ))}
+        </div>
+
+        {/* Desktop right */}
+        <div className="hidden items-center gap-3 md:flex">
+          <ThemeToggle />
+          <a
+            href="https://github.com/ZILLABB"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary py-2 px-4 text-xs"
+          >
+            GitHub ↗
+          </a>
+        </div>
+
+        {/* Mobile */}
+        <div className="flex items-center gap-3 md:hidden">
+          <ThemeToggle />
+          <button
+            onClick={() => setMobileMenu(!isMobileMenuOpen)}
+            className="rounded p-1.5 text-muted-foreground hover:text-foreground"
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen
+              ? <XMarkIcon className="size-5" />
+              : <Bars3Icon className="size-5" />
+            }
+          </button>
         </div>
       </div>
 
+      {/* Mobile drawer */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2, ease: "easeInOut" }}
-            className="glassmorphism absolute inset-x-0 top-full py-2 shadow-lg md:hidden"
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.15 }}
+            className="border-b border-border bg-background/95 backdrop-blur-sm md:hidden"
           >
-            <div className="flex flex-col space-y-4 px-4">
+            <div className="mx-auto max-w-6xl space-y-1 px-4 py-4 sm:px-6">
               {navLinks.map((link) => (
-                <motion.a
+                <a
                   key={link.name}
                   href={link.href}
-                  className="text-foreground/80 transition-colors hover:text-primary"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  whileHover={{ x: 4 }}
+                  onClick={() => setMobileMenu(false)}
+                  className="block py-2.5 text-sm text-muted-foreground hover:text-foreground"
                 >
                   {link.name}
-                </motion.a>
+                </a>
               ))}
+              <div className="pt-3">
+                <a
+                  href="https://github.com/ZILLABB"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary inline-flex py-2 px-4 text-xs"
+                >
+                  GitHub ↗
+                </a>
+              </div>
             </div>
           </motion.div>
         )}

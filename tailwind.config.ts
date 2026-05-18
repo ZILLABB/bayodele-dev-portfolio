@@ -63,7 +63,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['var(--font-inter)', ...defaultTheme.fontFamily.sans],
-        display: ['var(--font-space-grotesk)', ...defaultTheme.fontFamily.sans],
+        display: ['var(--font-syne)', ...defaultTheme.fontFamily.sans],
       },
       keyframes: {
         'accordion-down': {
