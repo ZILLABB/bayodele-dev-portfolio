@@ -1,7 +1,17 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { EnvelopeIcon, MapPinIcon } from '@heroicons/react/24/outline';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { EnvelopeIcon, MapPinIcon, CheckCircleIcon, ExclamationCircleIcon } from '@heroicons/react/24/outline';
+
+// ─── Setup ────────────────────────────────────────────────────────────────────
+// 1. Go to https://formspree.io → New Form → copy your form ID
+// 2. Replace the placeholder below with your actual ID, e.g. "xpzgkrby"
+const FORMSPREE_ID = 'YOUR_FORM_ID';
+const FORMSPREE_URL = `https://formspree.io/f/${FORMSPREE_ID}`;
+// ─────────────────────────────────────────────────────────────────────────────
+
+type Status = 'idle' | 'loading' | 'success' | 'error';
 
 const contactItems = [
   {
@@ -45,6 +55,49 @@ const fadeUp = {
 };
 
 export default function Contact() {
+  const [status, setStatus]   = useState<Status>('idle');
+  const [errorMsg, setError]  = useState('');
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    // Guard: remind dev to set a real form ID
+    if (FORMSPREE_ID === 'YOUR_FORM_ID') {
+      setError('Form not configured yet. Set FORMSPREE_ID in components/Contact.tsx.');
+      setStatus('error');
+      return;
+    }
+
+    setStatus('loading');
+    setError('');
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch(FORMSPREE_URL, {
+        method:  'POST',
+        body:    data,
+        headers: { Accept: 'application/json' },
+      });
+
+      if (res.ok) {
+        setStatus('success');
+        form.reset();
+      } else {
+        const json = await res.json().catch(() => ({}));
+        setError(
+          (json as { error?: string }).error ||
+          'Something went wrong. Please email me directly at shedubayode@gmail.com.'
+        );
+        setStatus('error');
+      }
+    } catch {
+      setError('Network error. Please email me directly at shedubayode@gmail.com.');
+      setStatus('error');
+    }
+  }
+
   return (
     <section id="contact" className="py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -88,9 +141,7 @@ export default function Contact() {
                         {item.value}
                       </a>
                     ) : (
-                      <p className="mt-0.5 text-sm font-medium text-foreground">
-                        {item.value}
-                      </p>
+                      <p className="mt-0.5 text-sm font-medium text-foreground">{item.value}</p>
                     )}
                   </div>
                 </div>
@@ -134,73 +185,137 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
           >
-            <form className="space-y-4" action="mailto:shedubayode@gmail.com" method="GET">
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div>
-                  <label htmlFor="name" className="mb-1.5 block text-xs text-muted-foreground">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    placeholder="Your name"
-                    className="input"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="mb-1.5 block text-xs text-muted-foreground">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    placeholder="you@company.com"
-                    className="input"
-                  />
-                </div>
-              </div>
+            <AnimatePresence mode="wait">
+              {status === 'success' ? (
+                /* ── Success state ── */
+                <motion.div
+                  key="success"
+                  initial={{ opacity: 0, scale: 0.97 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="flex h-full min-h-[360px] flex-col items-center justify-center gap-4 border border-border p-10 text-center"
+                >
+                  <CheckCircleIcon className="size-10 text-emerald-500" />
+                  <h3 className="font-display text-xl font-bold text-foreground">
+                    Message sent!
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    Thanks for reaching out. I&apos;ll get back to you within 24 hours.
+                  </p>
+                  <button
+                    onClick={() => setStatus('idle')}
+                    className="btn-secondary mt-2 px-4 py-2 text-xs"
+                  >
+                    Send another
+                  </button>
+                </motion.div>
+              ) : (
+                /* ── Form ── */
+                <motion.form
+                  key="form"
+                  onSubmit={handleSubmit}
+                  className="space-y-4"
+                  initial={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div>
+                      <label htmlFor="name" className="mb-1.5 block text-xs text-muted-foreground">
+                        Name
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        disabled={status === 'loading'}
+                        placeholder="Your name"
+                        className="input disabled:opacity-50"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="mb-1.5 block text-xs text-muted-foreground">
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        disabled={status === 'loading'}
+                        placeholder="you@company.com"
+                        className="input disabled:opacity-50"
+                      />
+                    </div>
+                  </div>
 
-              <div>
-                <label htmlFor="subject" className="mb-1.5 block text-xs text-muted-foreground">
-                  What&apos;s this about?
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  required
-                  placeholder="Full-time role / Contract / Collaboration / Other"
-                  className="input"
-                />
-              </div>
+                  <div>
+                    <label htmlFor="subject" className="mb-1.5 block text-xs text-muted-foreground">
+                      What&apos;s this about?
+                    </label>
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      required
+                      disabled={status === 'loading'}
+                      placeholder="Full-time role / Contract / Collaboration / Other"
+                      className="input disabled:opacity-50"
+                    />
+                  </div>
 
-              <div>
-                <label htmlFor="message" className="mb-1.5 block text-xs text-muted-foreground">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="body"
-                  rows={6}
-                  required
-                  placeholder="Tell me about the project, the problem, or the role. The more context the better."
-                  className="input resize-none"
-                />
-              </div>
+                  <div>
+                    <label htmlFor="message" className="mb-1.5 block text-xs text-muted-foreground">
+                      Message
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={6}
+                      required
+                      disabled={status === 'loading'}
+                      placeholder="Tell me about the project, the problem, or the role. The more context the better."
+                      className="input resize-none disabled:opacity-50"
+                    />
+                  </div>
 
-              <motion.button
-                type="submit"
-                className="btn-primary w-full"
-                whileHover={{ opacity: 0.92 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Send message
-              </motion.button>
-            </form>
+                  {/* Error banner */}
+                  <AnimatePresence>
+                    {status === 'error' && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0 }}
+                        className="flex items-start gap-2 border border-red-500/30 bg-red-500/5 p-3 text-xs text-red-400"
+                      >
+                        <ExclamationCircleIcon className="mt-0.5 size-4 flex-shrink-0" />
+                        {errorMsg}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  <motion.button
+                    type="submit"
+                    disabled={status === 'loading'}
+                    className="btn-primary w-full disabled:opacity-60"
+                    whileHover={{ opacity: 0.92 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    {status === 'loading' ? (
+                      <span className="flex items-center justify-center gap-2">
+                        <svg className="size-4 animate-spin" viewBox="0 0 24 24" fill="none">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8h4z" />
+                        </svg>
+                        Sending…
+                      </span>
+                    ) : (
+                      'Send message'
+                    )}
+                  </motion.button>
+                </motion.form>
+              )}
+            </AnimatePresence>
           </motion.div>
 
         </div>
